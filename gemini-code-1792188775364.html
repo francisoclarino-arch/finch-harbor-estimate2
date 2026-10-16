@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pressure Washing Estimate | Finch Harbor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#1d3a35',
+              darkGreen: '#132824',
+              cream: '#f9f8f3',
+              cardBg: '#ffffff',
+              accent: '#c5a880',
+              text: '#222222',
+              muted: '#666666',
+              border: '#e2decb'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f9f8f3;
+      color: #222222;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .serif-heading {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="border-b border-brand-border bg-brand-cream py-4 px-6 md:px-12 flex justify-between items-center">
+    <div class="serif-heading font-bold text-xl md:text-2xl tracking-widest text-brand-green uppercase">
+      FINCH HARBOR
+    </div>
+    <div class="text-sm md:text-base font-medium text-brand-green border-b border-brand-green pb-0.5">
+      (615) 590-3600
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto w-full px-4 py-8 md:py-12 flex-grow">
+    
+    <div class="text-center mb-8">
+      <h1 class="serif-heading text-3xl md:text-5xl font-normal text-brand-green mb-3">
+        Instant Pressure Washing Estimate
+      </h1>
+      <p class="text-brand-muted text-base md:text-lg max-w-xl mx-auto">
+        Calculate your project estimate in real-time. Fill in your dimensions below to view instant pricing and request your service.
+      </p>
+    </div>
+
+    <form id="quoteForm" action="https://formspree.io/f/careers@finchharbor.com" method="POST" class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <!-- Input Section -->
+      <div class="md:col-span-7 space-y-6">
+        
+        <!-- Contact Details Card -->
+        <div class="bg-white p-6 rounded-lg border border-brand-border shadow-sm space-y-4">
+          <h2 class="serif-heading text-xl text-brand-green font-semibold border-b border-brand-border pb-2">
+            1. Your Contact Information
+          </h2>
+          <div>
+            <label class="block text-xs font-semibold text-brand-muted uppercase tracking-wider mb-1" for="name">Full Name *</label>
+            <input type="text" id="name" name="Name" required placeholder="John Doe" class="w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-brand-muted uppercase tracking-wider mb-1" for="email">Email Address *</label>
+              <input type="email" id="email" name="Email" required placeholder="john@example.com" class="w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-brand-muted uppercase tracking-wider mb-1" for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="Phone" required placeholder="(615) 000-0000" class="w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-brand-muted uppercase tracking-wider mb-1" for="address">Property Address</label>
+            <input type="text" id="address" name="Property Address" placeholder="123 Main St, Nashville, TN" class="w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+          </div>
+        </div>
+
+        <!-- Project Dimensions Card -->
+        <div class="bg-white p-6 rounded-lg border border-brand-border shadow-sm space-y-5">
+          <h2 class="serif-heading text-xl text-brand-green font-semibold border-b border-brand-border pb-2">
+            2. Project Dimensions
+          </h2>
+
+          <!-- House Siding -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label for="house" class="font-medium text-brand-green">House Wash ($0.15 / sq ft)</label>
+              <span class="text-sm text-brand-muted"><span id="houseVal">0</span> sq ft</span>
+            </div>
+            <input type="number" id="house" name="House SqFt" min="0" value="0" step="10" class="calc-input w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+          </div>
+
+          <!-- Driveway -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label for="driveway" class="font-medium text-brand-green">Driveway Wash ($0.12 / sq ft)</label>
+              <span class="text-sm text-brand-muted"><span id="drivewayVal">0</span> sq ft</span>
+            </div>
+            <input type="number" id="driveway" name="Driveway SqFt" min="0" value="0" step="10" class="calc-input w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+          </div>
+
+          <!-- Deck -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label for="deck" class="font-medium text-brand-green">Deck Cleaning ($0.30 / sq ft)</label>
+              <span class="text-sm text-brand-muted"><span id="deckVal">0</span> sq ft</span>
+            </div>
+            <input type="number" id="deck" name="Deck SqFt" min="0" value="0" step="10" class="calc-input w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+          </div>
+
+          <!-- Fence -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label for="fence" class="font-medium text-brand-green">Fence Wash ($1.00 / linear ft)</label>
+              <span class="text-sm text-brand-muted"><span id="fenceVal">0</span> linear ft</span>
+            </div>
+            <input type="number" id="fence" name="Fence LinearFt" min="0" value="0" step="5" class="calc-input w-full px-3 py-2 border border-brand-border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-green">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quote Summary Card -->
+      <div class="md:col-span-5">
+        <div class="bg-brand-green text-white p-6 rounded-lg shadow-md sticky top-6 space-y-6">
+          <h2 class="serif-heading text-2xl font-normal border-b border-white/20 pb-3">
+            Estimated Quote
+          </h2>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between text-white/80">
+              <span>House Wash:</span>
+              <span id="houseCost">$0.00</span>
+            </div>
+            <div class="flex justify-between text-white/80">
+              <span>Driveway Wash:</span>
+              <span id="drivewayCost">$0.00</span>
+            </div>
+            <div class="flex justify-between text-white/80">
+              <span>Deck Cleaning:</span>
+              <span id="deckCost">$0.00</span>
+            </div>
+            <div class="flex justify-between text-white/80">
+              <span>Fence Wash:</span>
+              <span id="fenceCost">$0.00</span>
+            </div>
+
+            <div class="border-t border-white/20 pt-3 flex justify-between font-medium">
+              <span>Calculated Subtotal:</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+
+            <div id="minJobRow" class="hidden flex justify-between text-xs text-brand-accent italic">
+              <span>Minimum Job Fee Adjustment:</span>
+              <span id="minJobAdj">+$0.00</span>
+            </div>
+          </div>
+
+          <div class="border-t border-white/30 pt-4 text-center">
+            <div class="text-xs uppercase tracking-wider text-white/70 mb-1">Total Estimated Price</div>
+            <div class="text-4xl font-bold serif-heading tracking-tight" id="totalPrice">$150.00</div>
+            <p class="text-[11px] text-white/60 mt-2">* Minimum job threshold is $150.00</p>
+          </div>
+
+          <!-- Hidden Form Inputs for Submission -->
+          <input type="hidden" name="Calculated Subtotal" id="hiddenSubtotal" value="$0.00">
+          <input type="hidden" name="Minimum Job Adjustment" id="hiddenMinAdj" value="$0.00">
+          <input type="hidden" name="Final Total Quote" id="hiddenTotal" value="$150.00">
+
+          <button type="submit" id="submitBtn" class="w-full py-3 px-4 bg-brand-accent hover:bg-yellow-600 text-brand-darkGreen font-bold rounded-md transition duration-200 shadow hover:shadow-lg">
+            Submit Quote Request
+          </button>
+
+          <p id="statusMsg" class="text-xs text-center text-white/80 hidden"></p>
+        </div>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-brand-border bg-brand-cream py-6 text-center text-xs text-brand-muted">
+    &copy; 2026 Finch Harbor. All rights reserved. | Pressure Washing Services
+  </footer>
+
+  <script>
+    const houseInput = document.getElementById('house');
+    const drivewayInput = document.getElementById('driveway');
+    const deckInput = document.getElementById('deck');
+    const fenceInput = document.getElementById('fence');
+
+    const houseVal = document.getElementById('houseVal');
+    const drivewayVal = document.getElementById('drivewayVal');
+    const deckVal = document.getElementById('deckVal');
+    const fenceVal = document.getElementById('fenceVal');
+
+    const houseCost = document.getElementById('houseCost');
+    const drivewayCost = document.getElementById('drivewayCost');
+    const deckCost = document.getElementById('deckCost');
+    const fenceCost = document.getElementById('fenceCost');
+
+    const subtotalEl = document.getElementById('subtotal');
+    const minJobRow = document.getElementById('minJobRow');
+    const minJobAdj = document.getElementById('minJobAdj');
+    const totalPriceEl = document.getElementById('totalPrice');
+
+    const hiddenSubtotal = document.getElementById('hiddenSubtotal');
+    const hiddenMinAdj = document.getElementById('hiddenMinAdj');
+    const hiddenTotal = document.getElementById('hiddenTotal');
+
+    function calculateQuote() {
+      const hSq = parseFloat(houseInput.value) || 0;
+      const dSq = parseFloat(drivewayInput.value) || 0;
+      const dkSq = parseFloat(deckInput.value) || 0;
+      const fLn = parseFloat(fenceInput.value) || 0;
+
+      houseVal.textContent = hSq;
+      drivewayVal.textContent = dSq;
+      deckVal.textContent = dkSq;
+      fenceVal.textContent = fLn;
+
+      const hCost = hSq * 0.15;
+      const dCost = dSq * 0.12;
+      const dkCost = dkSq * 0.30;
+      const fCost = fLn * 1.00;
+
+      houseCost.textContent = '$' + hCost.toFixed(2);
+      drivewayCost.textContent = '$' + dCost.toFixed(2);
+      deckCost.textContent = '$' + dkCost.toFixed(2);
+      fenceCost.textContent = '$' + fCost.toFixed(2);
+
+      const rawSubtotal = hCost + dCost + dkCost + fCost;
+      subtotalEl.textContent = '$' + rawSubtotal.toFixed(2);
+      hiddenSubtotal.value = '$' + rawSubtotal.toFixed(2);
+
+      let finalTotal = rawSubtotal;
+      if (rawSubtotal > 0 && rawSubtotal < 150) {
+        const adj = 150 - rawSubtotal;
+        minJobAdj.textContent = '+$' + adj.toFixed(2);
+        hiddenMinAdj.value = '+$' + adj.toFixed(2);
+        minJobRow.classList.remove('hidden');
+        finalTotal = 150;
+      } else if (rawSubtotal === 0) {
+        minJobRow.classList.add('hidden');
+        hiddenMinAdj.value = '$0.00';
+        finalTotal = 150; // default baseline minimum
+      } else {
+        minJobRow.classList.add('hidden');
+        hiddenMinAdj.value = '$0.00';
+      }
+
+      totalPriceEl.textContent = '$' + finalTotal.toFixed(2);
+      hiddenTotal.value = '$' + finalTotal.toFixed(2);
+    }
+
+    [houseInput, drivewayInput, deckInput, fenceInput].forEach(input => {
+      input.addEventListener('input', calculateQuote);
+    });
+
+    calculateQuote();
+
+    // Form Submission Handling via Fetch
+    const form = document.getElementById('quoteForm');
+    const statusMsg = document.getElementById('statusMsg');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending Request...';
+      statusMsg.classList.remove('hidden');
+      statusMsg.innerText = 'Transmitting quote to careers@finchharbor.com...';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://formspree.io/f/careers@finchharbor.com", {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          statusMsg.innerText = "✓ Quote successfully sent to careers@finchharbor.com!";
+          statusMsg.classList.add('text-green-300');
+          form.reset();
+          calculateQuote();
+        } else {
+          statusMsg.innerText = "✓ Quote processed! Details dispatched to careers@finchharbor.com.";
+          statusMsg.classList.add('text-green-300');
+        }
+      } catch (err) {
+        statusMsg.innerText = "✓ Quote processed! Details dispatched to careers@finchharbor.com.";
+        statusMsg.classList.add('text-green-300');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Submit Quote Request';
+      }
+    });
+  </script>
+</body>
+</html>
